@@ -1,5 +1,5 @@
 const birthDate = document.querySelector("#bday");
-const checkBtn = document.querySelector("#check-btn");
+const checkBtn = document.querySelector("#check");
 //reverse function
 function reverseString(word) {
     word = word.split("");
@@ -20,7 +20,6 @@ function checkPalindrome(date) {
     const ddmmyy = day + month + year.slice(-2);
     const yymmdd = year.slice(-2) + month + day;
     const mmddyy = month + day + year.slice(-2);
-
     if (yyyymmdd === reverseString(yyyymmdd)) return [year + "/" + month + "/" + day, true];
     if (ddmmyyyy === reverseString(ddmmyyyy)) return [day + "/" + month + "/" + year, true];
     if (mmddyyyy === reverseString(mmddyyyy)) return [month + "/" + day + "/" + year, true];
@@ -97,7 +96,7 @@ function clickHandler() {
 
 }
 
-
+document.getElementById("result").style.display = "none";
 checkBtn.addEventListener("click", () => {
 
     if (birthDate.value === "") {
