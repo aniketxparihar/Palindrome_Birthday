@@ -13,7 +13,7 @@ function reverseString(word) {
 
 //Boolean check Palindrome
 function checkPalindrome(date) {
-    const [year, month, day] = date.split("-");
+    const [year, month, day] = date.split("-");//using array destructuring
     const yyyymmdd = year + month + day;
     const ddmmyyyy = day + month + year;
     const mmddyyyy = month + day + year;
@@ -43,9 +43,9 @@ function checkLeapYear(year) {
     return false;
 }
 
-//
+
 var noOfDays = 0;
-function findNextNearPalindromeDate(date) {
+function findNextPalindromeDate(date) {
     noOfDays = 0;
     console.log(date);
     var [year, month, day] = date.split("-");
@@ -62,46 +62,42 @@ function findNextNearPalindromeDate(date) {
             day = 1;
             month = month + 1;
         }
-
-        
-
         if (month === 13) {
             month = 1;
-            year=year+1;
+            year = year + 1;
         }
-
         var yyyymmdd = year + "-" + (month <= 9 ? ("0".concat(month)) : month).toString() + "-" + (day <= 9 ? "0".concat(day.toString()) : day).toString();
-        var [formdate, flag] = checkPalindrome(yyyymmdd);
-        if (flag) {
+        var [formdate, condi] = checkPalindrome(yyyymmdd);
+        if (condi) {
             nextDate = formdate;
             return nextDate;
         }
-
     }
     return nextDate;
 }
 
 function clickHandler() {
     console.log("a");
-    document.getElementById("result").style.display = "block";
+    document.querySelector("#result").style.display = "block";
     var [formdate, state] = checkPalindrome(birthDate.value);
     var resultDate = formdate;
     if (state) {
-        document.getElementById("result").innerText = `You Birthday ${resultDate} is Palindrome!!`;
+        document.querySelector("#result").innerText = `You Birthday ${resultDate} is Palindrome!!`;
     }
     else {
-        var nearDate = findNextNearPalindromeDate(birthDate.value);
-        document.getElementById("result").innerText = `Your Birthday is not palindrome. Next palindrome date is ${nearDate} which comes after ${noOfDays} days `;
+        var nearDate = findNextPalindromeDate(birthDate.value);
+        document.querySelector("#result").innerText = `Your Birthday is not palindrome. Next palindrome date is ${nearDate} which comes after ${noOfDays} days `;
     }
 
 }
 
-document.getElementById("result").style.display = "none";
+
+document.querySelector("#result").style.display = "none";
 checkBtn.addEventListener("click", () => {
 
     if (birthDate.value === "") {
-        document.getElementById("result").style.display = "block";
-        document.getElementById("result").innerText = "date cannot be empty";
+        document.querySelector("#result").style.display = "block";
+        document.querySelector("#result").innerText = "date cannot be empty";
     }
     else {
         
