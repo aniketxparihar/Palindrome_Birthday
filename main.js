@@ -26,7 +26,6 @@ function checkPalindrome(date) {
     if (ddmmyy === reverseString(ddmmyy)) return [day + "/" + month + "/" + year.slice(-2), true];
     if (yymmdd === reverseString(yymmdd)) return [year.slice(-2) + "/" + month + "/" + day, true];
     if (mmddyy === reverseString(mmddyy)) return [month + "/" + day + "/" + year.slice(-2), true];
-
     return ["", false];
 
 }
